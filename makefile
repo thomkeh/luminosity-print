@@ -9,7 +9,7 @@ MARKDOWN_TARGETS = $(DUMP_FILES:html-dump/%.htm=markdown/%.md)
 LATEX_TARGETS = $(MARKDOWN_TARGETS:markdown/%.md=latex/%.tex)
 HTML_TARGETS = $(MARKDOWN_TARGETS:markdown/%.md=html/%.htm)
 HPOTTER_FILES = templates/latex/hpmor.sty templates/latex/hpotter/hpotter.sty templates/latex/hpmor.tex templates/latex/hpotter/before_chapters.tex templates/latex/hpotter/halftitle.tex templates/latex/hpotter/titlepage.tex
-CLASSIC_FILES = templates/latex/hpmor.sty templates/latex/classic/classic.sty templates/latex/hpmor.tex templates/latex/classic/before_chapters.tex templates/latex/classic/disclaimer.tex templates/latex/hpotter/titlepage.tex
+CLASSIC_FILES = templates/latex/hpmor.sty templates/latex/classic/classic.sty templates/latex/hpmor.tex templates/latex/classic/before_chapters.tex templates/latex/classic/disclaimer.tex templates/latex/classic/titlepage.tex
 
 .PHONY: update
 # download new chapters from hpmor.com

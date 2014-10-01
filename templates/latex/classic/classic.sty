@@ -1,0 +1,50 @@
+% classic style for Harry Potter and the Methods of Rationality using the
+% Palatino font.
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{classic}[2013/08/03 classic package]
+%\RequirePackage{environ}
+\RequirePackage{calc}
+%\RequirePackage{microtype}
+
+
+\RequirePackage{fontspec}
+%\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Ligatures=TeX]{Adobe Garamond Pro}
+%\setmainfont[Ligatures=TeX]{Palatino Linotype}
+%\setmainfont[Ligatures=TeX]{Linux Libertine O}
+\RequirePackage{polyglossia}
+\setmainlanguage[variant=american]{english}
+\RequirePackage{hpmor}
+
+\newcommand{\beforechapters}{%
+  \input{before_chapters}
+}
+\newcommand{\afterchapters}{%
+  \input{end}
+}
+\widowpenalty=300
+\clubpenalty=300
+%\renewcommand*\rmdefault{ppl}
+\frenchspacing
+\chapterstyle{dash}
+\makepagestyle{outerplain}
+\makeevenfoot{outerplain}{\thepage}{}{}
+\makeoddfoot{outerplain}{}{}{\thepage}
+\pagestyle{outerplain}
+\midsloppy
+
+\setstocksize{20.5cm}{13.5cm}
+\settrimmedsize{20cm}{13.5cm}{*}
+\settypeblocksize{19cm}{13.5cm}{*}
+\newlength{\marginwidth}
+\setlength{\marginwidth}{2cm}
+\setlrmarginsandblock{\marginwidth}{\marginwidth}{*}
+\setlrmarginsandblock{\marginwidth}{*}{1}
+
+\setlrmarginsandblock{\marginwidth}{*}{*}
+\setlrmarginsandblock{*}{\marginwidth}{1}
+\setlrmarginsandblock{*}{\marginwidth}{*}
+
+\setulmarginsandblock{2cm}{2cm}{*}
+
+\checkandfixthelayout

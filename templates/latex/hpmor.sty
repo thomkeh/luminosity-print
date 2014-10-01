@@ -1,0 +1,28 @@
+% hpmor provides commands used by all hpmor classes
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{hpmor}
+\RequirePackage{newunicodechar}
+\RequirePackage{xpatch}
+\RequirePackage[normalem]{ulem}
+
+% get the name of the current chapter without using labels
+\apptocmd{\@chapter}{\gdef\currentchapter{#2}}{}{}
+\def\currentchapter{?}
+
+% unicode roman numeral substitutions
+\newunicodechar{Ⅰ}{I}
+\newunicodechar{Ⅱ}{II}
+\newunicodechar{Ⅲ}{III}
+\newunicodechar{Ⅳ}{IV}
+\newunicodechar{Ⅴ}{V}
+\newunicodechar{Ⅵ}{VI}
+\newunicodechar{Ⅶ}{VII}
+\newunicodechar{Ⅷ}{VIII}
+\newunicodechar{Ⅸ}{IX}
+\newunicodechar{Ⅹ}{X}
+\newunicodechar{Ⅺ}{XI}
+\newunicodechar{Ⅻ}{XII}
+\newunicodechar{Ⅼ}{L}
+\newunicodechar{Ⅽ}{C}
+\newunicodechar{Ⅾ}{D}
+\newunicodechar{Ⅿ}{M}

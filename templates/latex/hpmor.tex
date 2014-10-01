@@ -1,0 +1,22 @@
+% jinja2 latex template
+% slightly modified jinja2 syntax is used to accommodate latex syntax
+
+\documentclass[((( font_size|escape_tex )))pt,((( paper_sides|escape_tex 
+)))]{memoir}
+% style_class is the name of the style to use
+\usepackage{((( style_class|escape_tex )))}
+
+\begin{document}
+\title{Luminosity}
+\author{Hannah Finley}
+% title pages, table of contents, ext. are in a separate file
+\beforechapters
+
+% include each chapter
+((* for chapter in chapters *))
+\input{../latex/((( chapter|escape_tex )))}
+((* endfor *))
+
+\afterchapters
+
+\end{document}

@@ -77,7 +77,7 @@ def pdf(out_name, style_class, font_size=12, paper_size='a5paper',
     texenv.comment_end_string = '=))'
     texenv.filters['escape_tex'] = escape_tex
 
-    template = texenv.get_template('hpmor.tex')
+    template = texenv.get_template('ebook.tex')
     rendered_template = os.path.join(BUILD_DIR,
                                      os.extsep.join([out_name, 'tex']))
     chapters = glob.glob(os.path.join(LATEX_DIR, '*{}tex'.format(os.extsep)))

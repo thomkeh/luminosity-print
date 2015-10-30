@@ -8,14 +8,7 @@ DUMP_FILES = $(wildcard html-dump/*.htm)
 MARKDOWN_TARGETS = $(DUMP_FILES:html-dump/%.htm=markdown/%.md)
 LATEX_TARGETS = $(MARKDOWN_TARGETS:markdown/%.md=latex/%.tex)
 HTML_TARGETS = $(MARKDOWN_TARGETS:markdown/%.md=html/%.htm)
-CLASSIC_FILES = templates/latex/ebook.sty templates/latex/classic/classic.sty templates/latex/ebook.tex templates/latex/classic/before_chapters.tex templates/latex/classic/disclaimer.tex templates/latex/classic/titlepage.tex
-
-.PHONY: update
-# download new chapters from hpmor.com
-update:
-	python script/hpmor-scrape.py
-
-html-dump: update
+CLASSIC_FILES = templates/latex/bookforprint.sty templates/latex/classic/classic.sty templates/latex/bookforprint.tex templates/latex/classic/before_chapters.tex templates/latex/classic/disclaimer.tex templates/latex/classic/titlepage.tex
 
 markdown: $(MARKDOWN_TARGETS)
 
@@ -35,17 +28,17 @@ html/%.htm: markdown/%.md
 	pandoc -o html/$*.htm markdown/$*.md
 
 # xelatex generated pdf's
-pdf: pdf/luminosity.pdf
+pdf: pdf/book.pdf
 #pdf: pdf/hpmor-trade-hpotter.pdf pdf/hpmor-trade-classic.pdf
 
-pdf/luminosity.pdf: $(LATEX_TARGETS) $(CLASSIC_FILES)
+pdf/book.pdf: $(LATEX_TARGETS) $(CLASSIC_FILES)
 	mkdir -p .build
-	python script/hpmor-convert.py --format pdf -o hpmor-trade-classic --style-class classic --font-size 11 --paper-size a5paper --double-sided
-	mv -f .build/hpmor-trade-classic.pdf pdf/luminosity.pdf
+	python script/convert.py --format pdf -o out --style-class classic --font-size 10 --paper-size a5paper --double-sided
+	mv -f .build/out.pdf pdf/book.pdf
 
 .build/classic-test.pdf: $(LATEX_TARGETS) $(CLASSIC_FILES)
 	mkdir -p .build
-	python script/hpmor-convert.py --start-chapter 72 --end-chapter 73 --format pdf -o classic-test --style-class classic --font-size 10 --paper ebook --double-sided
+	python script/convert.py --start-chapter 72 --end-chapter 73 --format pdf -o classic-test --style-class classic --font-size 10 --paper ebook --double-sided
 
 .PHONY: all
 # download chapters and re-build all formats
